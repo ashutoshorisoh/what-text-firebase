@@ -60,24 +60,39 @@ function Home() {
   };
 
   return (
-    <div>
-      <h1>Home</h1>
-      {currentUser ? (
-        <>
-          <button onClick={() => navigate('/')}>Back</button>
-          
-          {/* Map through the users and render a button for each user */}
+    <div className="bg-gray-100 min-h-screen flex justify-center items-center p-4">
+      <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg w-full max-w-lg">
+        <div className='flex justify-between'>
+
+       
+        <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Welcome, {currentUser?.displayName}</h1>
+        
+        <div className="text-center mb-4">
+          <button
+            onClick={() => navigate('/')}
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+          >
+            LogOut
+          </button>
+        </div>
+        </div>
+
+        {/* Display the list of users */}
+        <div className="max-h-screen overflow-y-auto flex flex-col gap-2 ">
           {users
             .filter((user) => user.uid !== currentUser.uid) // Filter out the current user from the list
             .map((user) => (
-              <button key={user.uid} onClick={() => handleUserClick(user.uid)}>
-                {user.displayName}
+              <button
+                key={user.uid}
+                onClick={() => handleUserClick(user.uid)}
+                className="w-full text-left px-6 py-3 bg-gray-600   rounded-md hover:bg-blue-600 transition ease-in-out duration-150 flex items-center justify-between"
+              >
+                <span className="text-lg font-medium text-white  ">{user.displayName}</span>
+                <span className="text-gray-600"></span>
               </button>
             ))}
-        </>
-      ) : (
-        <div>Please log in to view users.</div> // Message if no user is logged in
-      )}
+        </div>
+      </div>
     </div>
   );
 }

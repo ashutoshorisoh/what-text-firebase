@@ -7,6 +7,9 @@ import Chat from './pages/Chat'
 import { AuthProvider } from './Context/AuthContext'
 function App() {
   return (
+    <div>
+
+   
     <AuthProvider>
     <BrowserRouter>
       <Routes>
@@ -16,6 +19,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     </AuthProvider>
+    </div>
   )
 }
 
