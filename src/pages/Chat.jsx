@@ -94,7 +94,7 @@ function Chat() {
         <h1 className="text-xl font-semibold">Chating with </h1>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white ml-10 mr-10 mt-[-40px] mb-[-40px]">
+      <div className="flex-1 overflow-y-auto min-h-[75vh] max-h-[80vh] flex flex-col gap-2 p-4 space-y-4 bg-white ml-10 mr-10 mt-[-40px] mb-[-40px]">
         {messages.map((message, index) => {
           const isSender = message.sender === auth.currentUser.uid;
           const formattedTime = formatTimestamp(message.timestamp);
