@@ -1,3 +1,6 @@
+# Ignore the .env file (for security reasons)
+.env
+
 # Logs
 logs
 *.log
@@ -6,11 +9,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +20,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Keep everything else, including the build output directory
+# If your build output is 'dist' or 'build', these lines are **removed** from the .gitignore:
+# dist/
+# build/
