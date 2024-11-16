@@ -65,7 +65,7 @@ function Home() {
         <div className='flex justify-between'>
 
        
-        <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Welcome, {currentUser?.displayName}</h1>
+        <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Welcome</h1>
         
         <div className="text-center mb-4">
           <button

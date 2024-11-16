@@ -87,43 +87,56 @@ function Chat() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-blue-400 p-5">
-      <div className="flex items-center justify-between p-4 bg-green-500 text-white m-10">
-        
-        <button className="text-white" onClick={() => window.history.back()}>Back</button>
-        <h1 className="text-xl font-semibold">Chating with </h1>
-      </div>
-
-      <div className="flex-1 overflow-y-auto min-h-[75vh] max-h-[80vh] flex flex-col gap-2 p-4 space-y-4 bg-white ml-10 mr-10 mt-[-40px] mb-[-40px]">
+    <div className="flex flex-col h-screen bg-gray-100">
+    {/* Header Section */}
+    <div className="flex items-center justify-between p-4 bg-green-500 text-white">
+      <button
+        className="text-white text-lg"
+        onClick={() => window.history.back()}
+      >
+        Back
+      </button>
+      <h1 className="text-2xl font-semibold">Chat</h1>
+    </div>
+  
+    {/* Message List Section */}
+    <div className="flex-1 overflow-y-auto px-4 py-2 bg-white">
+      <div className="space-y-4">
         {messages.map((message, index) => {
           const isSender = message.sender === auth.currentUser.uid;
           const formattedTime = formatTimestamp(message.timestamp);
           return (
             <div key={index} className={`flex ${isSender ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-xs p-3 rounded-lg ${isSender ? 'bg-blue-500 text-white' : 'bg-green-500 text-white'}`}>
-                <strong>{isSender ? '' : ''} </strong>{message.text}
-                <div className="text-xs text-white">{formattedTime}</div>
+              <div
+                className={`max-w-[75%] sm:max-w-[60%] md:max-w-[50%] p-3 rounded-lg ${isSender ? 'bg-blue-500 text-white' : 'bg-green-500 text-white'}`}
+              >
+                <p>{message.text}</p>
+                <div className="text-xs text-gray-400 mt-1">{formattedTime}</div>
               </div>
             </div>
           );
         })}
       </div>
-
-      <div className="p-4 bg-green-800 ml-10 mr-10 mt-[-40px] ">
-        <textarea
-          className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          placeholder="Type your message..."
-        />
-        <button
-          className="mt-2 w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          onClick={handleSendMessage}
-        >
-          Send
-        </button>
-      </div>
     </div>
+  
+    {/* Sticky Message Input Section */}
+    <div className="p-4 bg-green-800 mx-4 sm:mx-8 mt-4 sticky bottom-0 bg-opacity-90 shadow-lg">
+      <textarea
+        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={newMessage}
+        onChange={(e) => setNewMessage(e.target.value)}
+        placeholder="Type your message..."
+        rows="3"
+      />
+      <button
+        className="mt-2 w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onClick={handleSendMessage}
+      >
+        Send
+      </button>
+    </div>
+  </div>
+  
   );
 }
 
